@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashwin's Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/90822992c2.js" crossorigin="anonymous"></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #333;
+      font-size: 20px;
+    }
+
+    .container {
+      width: 85%;
+      margin: auto;
+      padding: 40px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      width: 150px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05) rotate(-2deg);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 18px;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #007BFF;
+      transition: 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .header-text {
+      text-align: center;
+      margin-top: 6%;
+    }
+
+    .header-text h1 {
+      font-size: 48px;
+      transition: transform 0.3s ease;
+    }
+
+    .header-text h1:hover {
+      transform: scale(1.03);
+    }
+
+    .header-text span {
+      color: #007BFF;
+    }
+
+    #about .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .about-col-1 {
+      flex-basis: 35%;
+      margin-bottom: 20px;
+    }
+
+    .about-col-1 img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .about-col-1 img:hover {
+      transform: scale(1.03);
+    }
+
+    .about-col-2 {
+      flex-basis: 60%;
+    }
+
+    .sub-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #007BFF;
+    }
+
+    .tab-contents {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: row;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .education-left, .skills-right {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .skills-right ul,
+    .education-left ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      font-size: 20px;
+    }
+
+    .cgpa,
+    .mark-1 {
+      font-weight: bold;
+      color: #007BFF;
+    }
+
+    #project .work-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    #project .work-list div {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease;
+      font-size: 20px;
+    }
+
+    #project .work-list div:hover {
+      transform: translateY(-8px);
+    }
+
+    #project i {
+      font-size: 40px;
+      color: #007BFF;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    #project i:hover {
+      transform: scale(1.2);
+    }
+
+    #contact .contact-right {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #contact p {
+      text-align: center;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    #contact i {
+      margin-right: 10px;
+      color: #007BFF;
+    }
+
+    .social-icon a {
+      text-decoration: none;
+      color: #007BFF;
+      font-size: 26px;
+      margin-right: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icon a:hover {
+      transform: scale(1.2);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #007BFF;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.3s ease;
+      font-size: 20px;
+    }
+
+    .btn:hover {
+      background: #0056cc;
+      transform: scale(1.05);
+    }
+
+    .copy-right {
+      text-align: center;
+      padding: 20px;
+      background: #f0f0f0;
+      color: #555;
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    .copy-right i {
+      color: red;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      #about .row {
+        flex-direction: column;
+      }
+
+      .tab-contents {
+        flex-direction: column;
+      }
+
+      .education-left,
+      .skills-right {
+        min-width: 100%;
+      }
+
+      .header-text h1 {
+        font-size: 36px;
+      }
+
+      .sub-title {
+        font-size: 28px;
+      }
+
+      .btn {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header">
+    <div class="container" data-aos="fade-down">
+      <nav>
+        <img class="logo" src="images/thirulogo-modified.png" alt="Logo" />
+        <ul>
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#project">Project</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-text" data-aos="zoom-in">
+        <h1>Hi, I'm <span>Dashwin P</span><br />From Thiruvannamalai</h1>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <!-- About Section -->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1" data-aos="fade-right">
+          <img src="images/thirupro.jpg" alt="Profile" />
+        </div>
+        <div class="about-col-2" data-aos="fade-left">
+          <h1 class="sub-title">About Me</h1>
+          <p>
+            I am a fresher equipped with strong technical skills in programming languages and systems administration.
+            With a keen eagerness to contribute innovative solutions, I adapt quickly to new technologies and effectively
+            collaborate in team environments. I’m seeking opportunities to apply my academic knowledge and gain practical
+            experience in IT projects and operations.
+          </p>
+          <br>
+          <div class="tab-contents">
+            <div class="skills-right" data-aos="fade-up-right">
+              <h3>Skills</h3><br>
+              <ul>
+                <li>Java</li>
+                <li>C++</li>
+                <li>Python</li>
+                <li>HTML and CSS</li>
+                <li>SQL</li>
+              </ul>
+            </div>
+            <div class="education-left" data-aos="fade-up-left">
+              <h3>Education</h3><br>
+              <ul>
+                <li>2023 - 2025 <br />MCA - <span class="cgpa">7.6/10 CGPA</span></li>
+                <li>2020 - 2023<br />BSc Computer Science - <span class="mark-1">7.8/10 CGPA</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Section -->
+  <div id="project">
+    <div class="container" data-aos="fade-up">
+      <h1 class="sub-title">My Work</h1>
+      <div class="work-list">
+        <div data-aos="zoom-in-up">
+          <i class="fa-brands fa-python"></i>
+          <h2>Ecosphere AI: The Ultimate Voice Companion</h2>
+          <p>Language used: Python</p>
+        </div>
+        <div data-aos="zoom-in-up" data-aos-delay="100">
+          <i class="fa-brands fa-app-store-ios"></i>
+          <h2>Faculty Leave Management</h2>
+          <p>Role: Front End Developer</p>
+          <p>Languages used: PHP, HTML, CSS, JavaScript</p>
+        </div>
+        <div data-aos="zoom-in-up" data-aos-delay="200">
+          <i class="fa-solid fa-cloud-arrow-down"></i>
+          <h2>Biometric Authenticator</h2>
+          <p>Languages used: HTML, CSS, PHP</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact">
+    <div class="container" data-aos="fade-up">
+      <div class="contact-right">
+        <h1 class="sub-title">Contact Me</h1>
+        <p><i class="fa-solid fa-paper-plane"></i> dondashwin@gmail.com</p>
+        <p><i class="fa-solid fa-phone"></i> 7904746460</p>
+
+        <div class="social-icon">
+          <a href="https://www.linkedin.com/in/thirumalaivsan-n-b1118a268/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/thirumalai45" target="_blank"><i class="fa-brands fa-github"></i></a>
+          <a href="https://instagram.com/the_i_ru___?utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <a class="btn" href="myresume/thiru'cv.pdf" download>Download Resume</a>
+      </div>
+    </div>
+    <div class="copy-right">
+      <p>&copy; Dashwin. <i class="fa-solid fa-heart"></i></p>
+    </div>
+  </div>
+
+  <!-- Init AOS -->
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+</html>
